@@ -3,23 +3,24 @@
 
 import Foundation
 
-struct BloomFilter<T: Hashable> {
+public struct BloomFilter<T: Hashable> {
     private var data: [Bool]
     private var seeds: [Int]
     
-    mutating func add(_ value: T) {
+    public mutating func add(_ value: T) {
         self.hashes(for: value)
             .map { abs($0 % data.count) }
             .forEach { data[$0] = true }
     }
     
-    func contains(_ value: T) -> Bool {
+    public func contains(_ value: T) -> Bool {
         self.hashes(for: value)
             .map { abs($0 % data.count) }
             .allSatisfy { data[$0] == true }
     }
     
-    init(size: Int, hashCount: Int) {
+    // likely to be deprecated in near future
+    public init(size: Int, hashCount: Int) {
         assert(0 < size)
         assert(0 < hashCount)
         
