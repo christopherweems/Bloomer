@@ -9,7 +9,7 @@ The API is here to stay.
 ## Usage
 
 ```
-let filter = BloomFilter<String>(..)
+var filter = BloomFilter<String>(..)
   
 filter.add("BloomFilter is generic over any hashable value.")
 
