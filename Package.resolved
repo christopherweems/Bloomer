@@ -5,8 +5,8 @@
         "package": "unstandard",
         "repositoryURL": "https://github.com/christopherweems/unstandard.git",
         "state": {
-          "branch": "main",
-          "revision": "531da261df7662234677fe7bf719c9fc957a8839",
+          "branch": "5.3",
+          "revision": "33c7f08c786ed679054ea09d8075b5e174d9a45e",
           "version": null
         }
       }
