@@ -7,7 +7,7 @@ public struct BloomFilter<T: Hashable> {
     private var data: Data
     private var seeds: [Int]
     
-    public mutating func add(_ value: T) {
+    public mutating func insert(_ value: T) {
         self.hashes(for: value)
             .map { abs($0 % bitCount) }
             .forEach { hashValue in

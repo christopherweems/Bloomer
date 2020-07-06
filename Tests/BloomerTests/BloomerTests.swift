@@ -15,7 +15,7 @@ extension BloomerTests {
         XCTAssertFalse(filter.contains("yo"))
         XCTAssertFalse(filter.contains("no"))
         
-        filter.add("yo")
+        filter.insert("yo")
         
         XCTAssert(filter.contains("yo"))
         XCTAssertFalse(filter.contains("no"))
@@ -42,7 +42,7 @@ extension BloomerTests {
         
         
         fibNumbers.forEach {
-            filter.add($0)
+            filter.insert($0)
         }
         
         fibNumbers.forEach {
