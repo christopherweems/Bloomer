@@ -29,16 +29,34 @@ public struct BloomFilter<T: Hashable> {
                 return (data[index] & match) != 0
             }
     }
+}
+
+
+// MARK: - Initializers
+
+extension BloomFilter {
+    public init(estimatedCount: Int, falsePositiveRate: Double = 0.01) {
+        assert(0 < estimatedCount)
+        assert(0.0 < falsePositiveRate)
+        assert(falsePositiveRate < 1.0)
+        let estimatedCount = Double(estimatedCount)
+        let falsePositiveRate = Double(falsePositiveRate)
+        
+        let bitCount = (-sqrt(2) * log2(falsePositiveRate) * estimatedCount).rounded(.up)
+        let hashCount = (-log2(falsePositiveRate)).rounded(.up)
+        
+        self.init(size: Int(bitCount), hashCount: Int(hashCount))
+    }
     
-    // likely to be deprecated in near future
-    // (size is specified in number of bits)
+    
+    /* size == bit count */
+    
     public init(size: Int, hashCount: Int) {
         assert(0 < size)
         assert(0 < hashCount)
         
         data = Data(count: max(size / 8, 1))
         seeds = (0..<hashCount).map { _ in Int.random(in: 0..<Int.max) }
-        
     }
 }
 
